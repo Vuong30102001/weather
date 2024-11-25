@@ -1,10 +1,4 @@
-enum WeatherCondition {
-  clear,
-  cloudy,
-  rainy,
-  snowy,
-  unknown
-}
+import '../../../../core/enum_condition.dart';
 
 class Weather {
   final WeatherCondition condition;

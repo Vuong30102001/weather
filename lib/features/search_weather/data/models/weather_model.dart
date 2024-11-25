@@ -1,3 +1,4 @@
+import '../../../../core/enum_condition.dart';
 import '../../domain/entities/weather.dart';
 
 class WeatherModel {

@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
-
-import 'features/search_weather/data/data_source/open_meteo_api_client.dart';
-import 'features/search_weather/data/repositories/location_repository_impl.dart';
-import 'features/search_weather/data/repositories/weather_repository_impl.dart';
-import 'features/search_weather/domain/use_case/get_location.dart';
-import 'features/search_weather/domain/use_case/get_weather.dart';
-import 'features/search_weather/presentation/State_Management/bloc/location_bloc.dart';
-import 'features/search_weather/presentation/State_Management/bloc/weather_bloc.dart';
-import 'features/search_weather/presentation/pages/weather_page.dart';
+import 'features/weather/data/data_source/open_meteo_api_client.dart';
+import 'features/weather/data/repositories/location_repository_impl.dart';
+import 'features/weather/data/repositories/weather_repository_impl.dart';
+import 'features/weather/domain/use_case/get_location.dart';
+import 'features/weather/domain/use_case/get_weather.dart';
+import 'features/weather/presentation/State_Management/bloc/location_bloc.dart';
+import 'features/weather/presentation/State_Management/bloc/weather_bloc.dart';
+import 'features/weather/presentation/pages/weather_page.dart';
 
 
 void main() {

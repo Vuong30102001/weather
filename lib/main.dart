@@ -8,9 +8,8 @@ import 'features/weather/data/repositories/weather_repository_impl.dart';
 import 'features/weather/domain/use_case/get_location_use_case.dart';
 import 'features/weather/domain/use_case/get_weather_use_case.dart';
 import 'features/weather/presentation/pages/weather_page.dart';
-import 'features/weather/presentation/state_management/bloc/location_bloc.dart';
-import 'features/weather/presentation/state_management/bloc/weather_bloc.dart';
-
+import 'features/weather/presentation/state_management/cubit/location_cubit.dart'; // Import đúng
+import 'features/weather/presentation/state_management/cubit/weather_cubit.dart'; // Import đúng
 
 void main() {
   final apiClient = OpenMeteoApiClient(http.Client());
@@ -37,8 +36,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => LocationBloc(getLocationUseCase)),
-        BlocProvider(create: (_) => WeatherBloc(getWeatherUseCase)),
+        BlocProvider(
+          create: (_) => LocationCubit(getLocationUseCase: getLocationUseCase),
+        ),
+        BlocProvider(
+          create: (_) => WeatherCubit(getWeatherUseCase: getWeatherUseCase),
+        ),
       ],
       child: MaterialApp(
         title: 'Weather App',

@@ -1,12 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:untitled/features/weather/presentation/state_management/cubit/location_cubit.dart';
+import 'package:untitled/features/weather/presentation/state_management/cubit/weather_cubit.dart';
 
-import '../state_management/bloc/location_bloc.dart';
-import '../state_management/bloc/weather_bloc.dart';
-import '../state_management/event/location_event.dart';
-import '../state_management/event/weather_event.dart';
 import '../state_management/state/location_state.dart';
 import '../state_management/state/weather_state.dart';
 import '../widget/weather_widget.dart';
@@ -16,8 +12,8 @@ class WeatherPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final locationBloc = context.read<LocationBloc>();
-    final weatherBloc = context.read<WeatherBloc>();
+    final locationCubit = context.read<LocationCubit>();
+    final weatherCubit = context.read<WeatherCubit>();
 
     return Scaffold(
       appBar: AppBar(
@@ -38,33 +34,35 @@ class WeatherPage extends StatelessWidget {
                 fillColor: Colors.grey[200],
               ),
               onSubmitted: (city) {
-                locationBloc.add(FetchLocationEvent(city));
+                // locationBloc.add(FetchLocationEvent(city));
+                locationCubit.fetchLocation(city);
               },
             ),
             const SizedBox(height: 20),
-            BlocBuilder<LocationBloc, LocationState>(
+            BlocBuilder<LocationCubit, LocationState>(
               builder: (context, state) {
-                if (state is LocationLoading) {
+                if (state.isLoading) {
                   return const CircularProgressIndicator();
-                } else if (state is LocationLoaded) {
-                  final location = state.location;
-                  weatherBloc.add(FetchWeatherEvent(location.latitude, location.longitude));
+                } else if (state.location != null) {
+                  final location = state.location!;
+                  // weatherBloc.add(FetchWeatherEvent(location.latitude, location.longitude));
+                  weatherCubit.fetchWeather(location.latitude, location.longitude);
                   return Text('Location: ${location.name}');
-                } else if (state is LocationError) {
-                  return Text(state.message);
+                } else if (state.errorMessage != null) {
+                  return Text(state.errorMessage!);
                 }
                 return const SizedBox();
               },
             ),
             const SizedBox(height: 20),
-            BlocBuilder<WeatherBloc, WeatherState>(
+            BlocBuilder<WeatherCubit, WeatherState>(
               builder: (context, state) {
-                if (state is WeatherLoading) {
+                if (state.isLoading) {
                   return const CircularProgressIndicator();
-                } else if (state is WeatherLoaded) {
-                  return WeatherWidget(weather: state.weather);
-                } else if (state is WeatherError) {
-                  return Text(state.message);
+                } else if (state.weather != null) {
+                  return WeatherWidget(weather: state.weather!);
+                } else if (state.errorMessage != null) {
+                  return Text(state.errorMessage!);
                 }
                 return const SizedBox();
               },

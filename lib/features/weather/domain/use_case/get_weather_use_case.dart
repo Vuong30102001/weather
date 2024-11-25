@@ -1,10 +1,10 @@
 import '../entities/weather.dart';
 import '../repositories/weather_repository.dart';
 
-class GetWeather {
+class GetWeatherUseCase {
   final WeatherRepository repository;
 
-  GetWeather(this.repository);
+  GetWeatherUseCase(this.repository);
 
   Future<Weather> execute(double latitude, double longitude) async {
     return await repository.getWeather(latitude, longitude);

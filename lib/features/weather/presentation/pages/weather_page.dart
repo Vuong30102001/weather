@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../State_Management/bloc/location_bloc.dart';
-import '../State_Management/bloc/weather_bloc.dart';
-import '../State_Management/event/location_event.dart';
-import '../State_Management/event/weather_event.dart';
-import '../State_Management/state/location_state.dart';
-import '../State_Management/state/weather_state.dart';
+import '../state_management/bloc/location_bloc.dart';
+import '../state_management/bloc/weather_bloc.dart';
+import '../state_management/event/location_event.dart';
+import '../state_management/event/weather_event.dart';
+import '../state_management/state/location_state.dart';
+import '../state_management/state/weather_state.dart';
 import '../widget/weather_widget.dart';
 
 class WeatherPage extends StatelessWidget {

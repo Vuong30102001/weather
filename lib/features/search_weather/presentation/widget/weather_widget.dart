@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/core/weather_icons.dart';
 
 import '../../domain/entities/weather.dart';
 
@@ -10,10 +11,16 @@ class WeatherWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        Icon(
+          WeatherIcons.getIconForCondition(weather.condition),
+          size:100,
+          color: Colors.blue,
+        )
+        ,
         Text(
-          'Condition: ${weather.condition}',
+          'Condition: ${weather.condition.name}',
           style: const TextStyle(fontSize: 18),
         ),
         const SizedBox(height: 8),

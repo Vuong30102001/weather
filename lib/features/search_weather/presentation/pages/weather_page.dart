@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,14 +22,20 @@ class WeatherPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Weather App'),
+        centerTitle: true,
+        backgroundColor: Colors.blue.shade50,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             TextField(
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 labelText: 'Enter city name',
+                hintText: 'Search',
+                border: const OutlineInputBorder(),
+                filled: true,
+                fillColor: Colors.grey[200],
               ),
               onSubmitted: (city) {
                 locationBloc.add(FetchLocationEvent(city));

@@ -1,5 +1,9 @@
 import '../../domain/entities/location.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'location_model.g.dart';
+
+@JsonSerializable()
 class LocationModel {
   final double latitude;
   final double longitude;
@@ -11,13 +15,7 @@ class LocationModel {
     required this.name,
   });
 
-  factory LocationModel.fromJson(Map<String, dynamic> json) {
-    return LocationModel(
-      latitude: json['latitude'] as double,
-      longitude: json['longitude'] as double,
-      name: json['name'] as String,
-    );
-  }
+  factory LocationModel.fromJson(Map<String, dynamic> json) => _$LocationModelFromJson(json);
 
   Location toEntity() {
     return Location(

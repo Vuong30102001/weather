@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'enum_condition.dart';
+import 'weather_condition.dart';
 
 class WeatherIcons{
   static IconData getIconForCondition(WeatherCondition condition){

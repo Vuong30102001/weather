@@ -1,50 +1,45 @@
-import '../../../../core/enum_condition.dart';
+import 'package:json_annotation/json_annotation.dart';
+import '../../../../core/weather_condition.dart';
 import '../../domain/entities/weather.dart';
 
+part 'weather_model.g.dart';
+
+@JsonSerializable()
 class WeatherModel {
-  final WeatherCondition condition;
   final double temperature;
 
+  @JsonKey(fromJson: _mapStringToWeatherCondition)
+  final WeatherCondition condition;
+
   WeatherModel({
-    required this.condition,
     required this.temperature,
+    required this.condition,
   });
 
-  factory WeatherModel.fromJson(Map<String, dynamic> json) {
-    final conditionCode = json['current_weather']['weathercode'] as int;
-    final temperature = json['current_weather']['temperature'] as double;
+  factory WeatherModel.fromJson(Map<String, dynamic> json) =>
+      _$WeatherModelFromJson(json);
 
-    return WeatherModel(
-      condition: _mapConditionCode(conditionCode),
+  Map<String, dynamic> toJson() => _$WeatherModelToJson(this);
+
+  Weather toEntity() {
+    return Weather(
       temperature: temperature,
+      condition: condition,
     );
   }
 
-  static WeatherCondition _mapConditionCode(int code) {
-    switch (code) {
-      case 0:
+  static WeatherCondition _mapStringToWeatherCondition(String condition) {
+    switch (condition.toLowerCase()) {
+      case 'clear':
         return WeatherCondition.clear;
-      case 1:
-      case 2:
-      case 3:
-        return WeatherCondition.cloudy;
-      case 61:
-      case 63:
-      case 65:
+      case 'rainy':
         return WeatherCondition.rainy;
-      case 71:
-      case 73:
-      case 75:
+      case 'cloudy':
+        return WeatherCondition.cloudy;
+      case 'snowy':
         return WeatherCondition.snowy;
       default:
         return WeatherCondition.unknown;
     }
-  }
-
-  Weather toEntity() {
-    return Weather(
-      condition: condition,
-      temperature: temperature,
-    );
   }
 }

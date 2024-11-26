@@ -1,4 +1,4 @@
-import '../../../../core/enum_condition.dart';
+import '../../../../core/weather_condition.dart';
 
 class Weather {
   final WeatherCondition condition;

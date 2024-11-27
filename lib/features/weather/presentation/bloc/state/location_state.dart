@@ -12,14 +12,14 @@ class LocationState extends Equatable{
   });
 
   LocationState copyWith({
-    bool? isLoading,
+    required bool isLoading,
     Location? location,
-    String? errorMessage,
+    required String errorMessage,
   }) {
     return LocationState(
-      isLoading: isLoading ?? this.isLoading,
+      isLoading: isLoading,
       location: location ?? this.location,
-      errorMessage: errorMessage ?? this.errorMessage,
+      errorMessage: errorMessage,
     );
   }
 

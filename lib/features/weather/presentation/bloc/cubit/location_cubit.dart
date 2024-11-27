@@ -8,13 +8,16 @@ class LocationCubit extends Cubit<LocationState>{
   LocationCubit({required this.getLocationUseCase}) : super (const LocationState());
 
   Future<void> fetchLocation(String city) async {
-    emit(state.copyWith(isLoading: true));
+    emit(state.copyWith(
+        isLoading: true,
+      errorMessage: 'null',
+    ));
     try{
       final Location location = await getLocationUseCase.execute(city);
       emit(state.copyWith(
         isLoading: false,
         location: location,
-        errorMessage: null,
+        errorMessage: 'null',
       ));
     }
     catch (error){

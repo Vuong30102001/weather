@@ -16,11 +16,12 @@ class WeatherState extends Equatable{
     bool? isLoading,
     Weather? weather,
     String? errorMessage,
+    bool resetErrorMessage = false,
   }){
     return WeatherState(
       isLoading: isLoading ?? this.isLoading,
       weather: weather ?? this.weather,
-      errorMessage: errorMessage ?? this.errorMessage,
+      errorMessage: resetErrorMessage ? null : errorMessage ?? this.errorMessage,
     );
   }
 

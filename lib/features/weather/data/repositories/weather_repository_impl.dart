@@ -16,7 +16,7 @@ class WeatherRepositoryImpl implements WeatherRepository {
     final response = await apiClient.fetchWeather(latitude, longitude);
 
     final jsonResponse = jsonDecode(response) as Map<String, dynamic>;
-    final weatherModel = WeatherModel.fromJson(jsonResponse);
+    final weatherModel = WeatherModel.fromJson(jsonResponse['current_weather']);
     return weatherModel.toEntity();
   }
 }

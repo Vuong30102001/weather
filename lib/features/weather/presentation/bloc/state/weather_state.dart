@@ -13,15 +13,14 @@ class WeatherState extends Equatable{
   });
 
   WeatherState copyWith({
-    bool? isLoading,
+    required bool isLoading,
     Weather? weather,
-    String? errorMessage,
-    bool resetErrorMessage = false,
+    required String errorMessage,
   }){
     return WeatherState(
-      isLoading: isLoading ?? this.isLoading,
+      isLoading: isLoading,
       weather: weather ?? this.weather,
-      errorMessage: resetErrorMessage ? null : errorMessage ?? this.errorMessage,
+      errorMessage: errorMessage,
     );
   }
 

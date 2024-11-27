@@ -9,13 +9,16 @@ class WeatherCubit extends Cubit<WeatherState>{
   WeatherCubit({required this.getWeatherUseCase}) : super(const WeatherState());
 
   Future<void> fetchWeather(double latitude, double longitude) async {
-    emit(state.copyWith(isLoading: true));
+    emit(state.copyWith(
+        isLoading: true,
+      errorMessage: 'null'
+    ));
     try{
       final Weather weather = await getWeatherUseCase.execute(latitude, longitude);
       emit(state.copyWith(
         isLoading: false,
         weather: weather,
-        errorMessage: null,
+        errorMessage: 'null',
       ));
     }
     catch (error){

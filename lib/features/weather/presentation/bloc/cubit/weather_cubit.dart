@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled/features/weather/domain/use_case/get_weather_use_case.dart';
-import 'package:untitled/features/weather/presentation/state_management/state/weather_state.dart';
+import 'package:untitled/features/weather/presentation/bloc/state/weather_state.dart';
 
 import '../../../domain/entities/weather.dart';
 

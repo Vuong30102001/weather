@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled/features/weather/domain/entities/location.dart';
 import 'package:untitled/features/weather/domain/use_case/get_location_use_case.dart';
-import 'package:untitled/features/weather/presentation/state_management/state/location_state.dart';
+import 'package:untitled/features/weather/presentation/bloc/state/location_state.dart';
 
 class LocationCubit extends Cubit<LocationState>{
   final GetLocationUseCase getLocationUseCase;

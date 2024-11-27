@@ -8,8 +8,8 @@ import 'features/weather/data/repositories/weather_repository_impl.dart';
 import 'features/weather/domain/use_case/get_location_use_case.dart';
 import 'features/weather/domain/use_case/get_weather_use_case.dart';
 import 'features/weather/presentation/pages/weather_page.dart';
-import 'features/weather/presentation/state_management/cubit/location_cubit.dart'; // Import đúng
-import 'features/weather/presentation/state_management/cubit/weather_cubit.dart'; // Import đúng
+import 'features/weather/presentation/bloc/cubit/location_cubit.dart';
+import 'features/weather/presentation/bloc/cubit/weather_cubit.dart';
 
 void main() {
   final apiClient = OpenMeteoApiClient(http.Client());

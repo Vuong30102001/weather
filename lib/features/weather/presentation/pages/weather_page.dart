@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:untitled/features/weather/presentation/state_management/cubit/location_cubit.dart';
-import 'package:untitled/features/weather/presentation/state_management/cubit/weather_cubit.dart';
+import 'package:untitled/features/weather/presentation/bloc/cubit/location_cubit.dart';
+import 'package:untitled/features/weather/presentation/bloc/cubit/weather_cubit.dart';
 
-import '../state_management/state/location_state.dart';
-import '../state_management/state/weather_state.dart';
+import '../bloc/state/location_state.dart';
+import '../bloc/state/weather_state.dart';
 import '../widget/weather_widget.dart';
 
 class WeatherPage extends StatelessWidget {
